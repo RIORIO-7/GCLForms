@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8" />
+  <title>製品アンケート</title>
+  <style>
+    body {
+      background-color: #000;
+      color: #f0f0f0;
+      font-family: sans-serif;
+      padding: 30px;
+    }
+
+    .container {
+      background: #1a1a1a;
+      padding: 20px;
+      border-radius: 10px;
+      max-width: 600px;
+      margin: auto;
+    }
+
+    h2 {
+      color: #00bfff;
+      text-align: center;
+    }
+
+    label {
+      display: block;
+      margin-top: 15px;
+      font-weight: bold;
+    }
+
+    input[type="text"],
+    input[type="email"],
+    textarea,
+    select {
+      width: 100%;
+      padding: 10px;
+      background: #2a2a2a;
+      border: 1px solid #444;
+      color: #f0f0f0;
+      border-radius: 5px;
+      margin-top: 5px;
+    }
+
+    textarea {
+      height: 80px;
+    }
+
+    .radio-group label {
+      margin-right: 15px;
+      font-weight: normal;
+    }
+
+    button {
+      margin-top: 20px;
+      padding: 12px;
+      width: 100%;
+      background: #00bfff;
+      color: #000;
+      font-size: 16px;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      font-weight: bold;
+    }
+
+    button:hover {
+      background: #00e5ff;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h2>製品アンケート</h2>
+    <form action="https://formspree.io/f/xjkogbrg" method="POST">
+      <!-- ✅ 送信後に thanks.html へ -->
+      <input type="hidden" name="_redirect" value="thanks.html" />
+
+      <label>メールアドレス</label>
+      <input type="email" name="email" required />
+
+      <label>お名前</label>
+      <input type="text" name="name" required />
+
+      <label>製品の満足度は？</label>
+      <div class="radio-group">
+        <label><input type="radio" name="satisfaction" value="とても満足" required /> とても満足</label>
+        <label><input type="radio" name="satisfaction" value="満足" /> 満足</label>
+        <label><input type="radio" name="satisfaction" value="普通" /> 普通</label>
+        <label><input type="radio" name="satisfaction" value="やや不満" /> やや不満</label>
+        <label><input type="radio" name="satisfaction" value="不満" /> 不満</label>
+      </div>
+
+      <label>主な使用目的</label>
+      <select name="usage">
+        <option value="">選択してください</option>
+        <option value="ライブ">ライブ</option>
+        <option value="レコーディング">レコーディング</option>
+        <option value="自宅練習">自宅練習</option>
+        <option value="配信">配信・YouTube</option>
+        <option value="その他">その他</option>
+      </select>
+
+      <label>音について感じたこと</label>
+      <textarea name="sound"></textarea>
+
+      <label>他に使ったことのあるブランド</label>
+      <input type="text" name="brands" />
+
+      <label>改善してほしいところ</label>
+      <textarea name="improvement"></textarea>
+
+      <label>こんな製品があったら嬉しい！（自由記述）</label>
+      <textarea name="wishlist" placeholder="例：爆音なコンパクトエフェクターが欲しい！"></textarea>
+
+      <button type="submit">送信</button>
+    </form>
+  </div>
+</body>
+</html>

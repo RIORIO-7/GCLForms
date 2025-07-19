@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>製品登録フォーム</title>
+  <style>
+    body {
+      background-color: #000;
+      color: #f0f0f0;
+      font-family: sans-serif;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-height: 100vh;
+      padding: 20px;
+    }
+
+    .container {
+      background: #1a1a1a;
+      padding: 30px;
+      border-radius: 10px;
+      width: 100%;
+      max-width: 500px;
+    }
+
+    h2 {
+      text-align: center;
+      color: #00bfff;
+    }
+
+    label {
+      display: block;
+      margin-top: 15px;
+      font-weight: bold;
+    }
+
+    input[type="text"],
+    input[type="email"],
+    input[type="date"] {
+      width: 100%;
+      padding: 10px;
+      margin-top: 5px;
+      background: #2a2a2a;
+      border: 1px solid #444;
+      color: #f0f0f0;
+      border-radius: 5px;
+    }
+
+    input[type="checkbox"] {
+      margin-right: 8px;
+    }
+
+    button {
+      width: 100%;
+      padding: 12px;
+      margin-top: 25px;
+      background-color: #00bfff;
+      color: #000;
+      font-size: 16px;
+      border: none;
+      border-radius: 6px;
+      cursor: pointer;
+    }
+
+    .message {
+      text-align: center;
+      margin-top: 20px;
+      display: none;
+      color: #4aff6a;
+      font-weight: bold;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h2>製品登録フォーム</h2>
+    <form action="https://formspree.io/f/movljany" method="POST" id="productForm">
+      <!-- ✅ アンケートページへリダイレクト -->
+      <input type="hidden" name="_redirect" value="survey.html" />
+
+      <label>氏名*</label>
+      <input type="text" name="name" required />
+
+      <label>メールアドレス*</label>
+      <input type="email" name="email" required />
+
+      <label>製品シリアル番号*</label>
+      <input type="text" name="serial" required />
+
+      <label>購入日</label>
+      <input type="date" name="date" />
+
+      <label>購入店舗名</label>
+      <input type="text" name="store" />
+
+      <label>
+        <input type="checkbox" name="newsletter" value="希望する" />
+        メルマガ配信を希望する
+      </label>
+
+      <label>
+        <input type="checkbox" id="agree" required />
+        利用規約に同意します
+      </label>
+
+      <button type="submit">送信</button>
+    </form>
+
+    <div id="message" class="message">ご登録ありがとうございました！</div>
+  </div>
+
+  <script>
+    const form = document.getElementById("productForm");
+    const agree = document.getElementById("agree");
+
+    form.addEventListener("submit", function (e) {
+      if (!agree.checked) {
+        e.preventDefault();
+        alert("利用規約に同意してください。");
+      }
+    });
+  </script>
+</body>
+</html>？
